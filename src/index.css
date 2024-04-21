@@ -1,0 +1,19 @@
+/* Import Tailwind CSS base styles */
+@import 'tailwindcss/base';
+
+/* Import Tailwind CSS components styles */
+@import 'tailwindcss/components';
+
+/* Import Tailwind CSS utilities styles */
+@import 'tailwindcss/utilities';
+
+/* Additional styles or customizations */
+/* Add your own custom CSS here */
+@layer utilities{
+    .nav-link{
+        @apply font-medium px-3 py-2 hover:underline text-lg hover:text-brand
+    }
+    .nav-mobile{
+        @apply font-bold text-2xl p-8 w-full text-center underline
+    }
+}
