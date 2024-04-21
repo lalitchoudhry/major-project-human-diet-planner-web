@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import OpenAI from "openai";
 import axios from 'axios';
 
-const llm = new OpenAI({apiKey: '27b95a3400e500cba3ab6afb030a0dae16b8d45fcb4626456aa5acc5b7901018', baseURL: 'https://api.together.xyz/v1', dangerouslyAllowBrowser: true });
+// const llm = new OpenAI({apiKey: '27b95a3400e500cba3ab6afb030a0dae16b8d45fcb4626456aa5acc5b7901018', baseURL: 'https://api.together.xyz/v1', dangerouslyAllowBrowser: true });
+const llm = new OpenAI({apiKey: process.env.REACT_APP_SECRET_API, baseURL: 'https://api.together.xyz/v1', dangerouslyAllowBrowser: true });
 
 const CalorieCounter = () => {
   const [foods, setFoods] = useState([]);
