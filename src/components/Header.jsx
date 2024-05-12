@@ -51,6 +51,7 @@ const Header = () => {
             {isLoggedIn ? (
               <>
                 <Link to="/post">Community</Link>
+                <Link to="https://84cfn2.csb.app/">BMR Calculator</Link>
                 <Link to="/dashboard">Dashboard</Link>
                 <Link to="/userprofile/:username">Profile</Link>
                 <button onClick={handleLogout}>Logout </button>

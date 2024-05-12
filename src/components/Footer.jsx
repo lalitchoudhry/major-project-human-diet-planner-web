@@ -33,6 +33,11 @@ const Footer = () => {
               </Link>
             </li>
             <li>
+              <Link to="https://84cfn2.csb.app/" className="hover:underline" href="#">
+                BMR Calculator
+              </Link>
+            </li>
+            <li>
               <a className="hover:underline" href="#">
                 Privacy Policy
               </a>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -28,12 +30,13 @@ const Register = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
+      console.log("register submit:")
       const server_url = process.env.REACT_APP_SERVER_URL;
       const res = await axios.post(`${server_url}user/register`, formData);
       setMessage('Registration Successful');
       setTimeout(() => {
         setMessage('');
-        window.location.href = '/login';
+        navigate("/login");
       }, 1000);
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
@@ -60,33 +63,33 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="px-6 pb-6">
           <div className="mb-6">
             <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="form-input w-full" required />
+            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="form-input border w-full" required />
           </div>
           <div className="mb-6">
             <label htmlFor="username" className="block text-gray-700 text-sm font-bold mb-2">Username:</label>
-            <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} className="form-input w-full" required />
+            <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} className="form-input border w-full" required />
           </div>
           <div className="mb-6">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="form-input w-full" required />
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="form-input border w-full" required />
           </div>
           <div className="mb-6">
             <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">Password:</label>
-            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} className="form-input w-full" required />
+            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} className="form-input border w-full" required />
           </div>
           <div className="mb-6">
             <label htmlFor="dob" className="block text-gray-700 text-sm font-bold mb-2">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" value={formData.dob} onChange={handleChange} className="form-input w-full" required />
+            <input type="date" id="dob" name="dob" value={formData.dob} onChange={handleChange} className="form-input border w-full" required />
           </div>
           <div className="mb-6">
             <label htmlFor="height" className="block text-gray-700 text-sm font-bold mb-2">Height(cm)</label>
-            <input type="number" id="height" name="height" value={formData.height} onChange={handleChange} className="form-input w-full" required />
+            <input type="number" id="height" name="height" value={formData.height} onChange={handleChange} className="form-input border w-full" required />
           </div>
           <div className="mb-6">
             <label htmlFor="weight" className="block text-gray-700 text-sm font-bold mb-2">Weight(kg):</label>
-            <input type="number" id="weight" name="weight" value={formData.weight} onChange={handleChange} className="form-input w-full" required />
+            <input type="number" id="weight" name="weight" value={formData.weight} onChange={handleChange} className="form-input border w-full" required />
           </div>
-          <button type="submit" className="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-black font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 w-full">Register</button>
+          <button type="submit" className="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-black font-bold py-3 px-6 rounded-full focus:outline-none focus:shadow-outline transition duration-300 w-full">{message === '' ? "Register" : "Loading"}</button>
         </form>
         </>
         )}
